@@ -8,6 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material-mods/material-mods.module';
 import { MaterialTestsComponent } from './material/material-tests/material-tests.component';
 import { ShoppingListComponent } from './features/shopping-list/shopping-list.component';
+import { NewRecipeComponent } from './features/recipes/new-recipe/new-recipe.component';
+import { HomeComponent } from './features/home/home.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { AuthComponent } from './features/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +22,18 @@ import { ShoppingListComponent } from './features/shopping-list/shopping-list.co
     HeaderComponent,
     MaterialTestsComponent,
     ShoppingListComponent,
+    NewRecipeComponent,
+    HomeComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase())
   ],
   providers: [],
   bootstrap: [AppComponent]

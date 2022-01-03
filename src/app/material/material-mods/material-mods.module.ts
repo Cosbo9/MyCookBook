@@ -7,6 +7,7 @@ import { MatBadgeModule } from '@angular/material/badge'
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const MaterialComponents = [
   MatTabsModule,
@@ -16,7 +17,8 @@ const MaterialComponents = [
   MatBadgeModule,
   MatListModule,
   MatMenuModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatDialogModule
 ]
 
 
