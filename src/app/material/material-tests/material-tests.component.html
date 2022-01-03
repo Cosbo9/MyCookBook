@@ -1,0 +1,85 @@
+<!-- base button styles -->
+<div>
+    <button mat-button>click me</button>
+    <button mat-raised-button>Hello World</button>
+    <button mat-flat-button>Hello World</button>
+    <button mat-stroked-button>Hello World</button>
+</div>
+<!-- base button rounded styles -->
+<div>
+    <button mat-icon-button>icon</button>
+    <button mat-fab>fab</button>
+    <button mat-mini-fab>minifab</button>
+</div>
+<!-- styles button text and pulse animation -->
+<div>
+    <button color="primary" mat-button>Primary</button>
+    <button color="accent" mat-button>accent</button>
+    <button color="warn" mat-button>warn</button>
+    <button style="color: red;" mat-button>red</button>
+    <!-- styles button background -->
+    <button color="primary" mat-raised-button>Primary</button>
+    <button color="accent" mat-raised-button>accent</button>
+    <button color="warn" mat-raised-button>warn</button>
+    <button style="background-color: red; color: white;" mat-raised-button>inline red</button>
+</div>
+<!-- create a toggle button -->
+<div>
+    <mat-button-toggle #toggleBtn>Toggle</mat-button-toggle>
+    {{ toggleBtn.checked}}
+    <div *ngIf="toggleBtn.checked">Hello!</div>
+</div>
+<!-- grouped toggle buttons -->
+<div>
+    <mat-button-toggle-group #toggleGroup="matButtonToggleGroup" multiple>
+        <mat-button-toggle value="angular">Angular</mat-button-toggle>
+        <mat-button-toggle value="react">React</mat-button-toggle>
+        <mat-button-toggle value="vue">Vue</mat-button-toggle>
+    </mat-button-toggle-group>
+    {{toggleGroup.value}}
+</div>
+<hr>
+<!-- create icons from material -->
+<div>
+    <mat-icon color="primary">
+        <span class="material-icons-round">
+            settings
+        </span>
+    </mat-icon>
+</div>
+<hr>
+<!-- create notification badges -->
+<div>
+    <span matBadge="5">Notifications</span>
+</div>
+<div>
+    <span matBadge="5" matBadgePosition="below before">Notifications</span>
+</div>
+<div>
+    <span matBadge="5" matBadgePosition="below after">Notifications</span>
+</div>
+<div>
+    <span matBadge="5" matBadgePosition="above before">Notifications</span>
+</div>
+<hr>
+<!-- material classes that can style elements -->
+<div class="mat-display-4">display 4</div>
+<div class="mat-display-3">display 3</div>
+<div class="mat-display-2">display 2</div>
+<div class="mat-display-1">display 1</div>
+<hr>
+<div class="mat-headline">this is a heading for h1</div>
+<div class="mat-title">this is a heading for h2</div>
+<div class="mat-subheading-2">this is a heading for h3</div>
+<div class="mat-subheading-1">this is a heading for h4</div>
+<hr>
+<div class="mat-body-1">this is body text</div>
+<div class="mat-body-2">this is bold body text</div>
+<div class="mat-caption">this is caption text</div>
+<hr>
+<div class="mat-typography">
+    <h1>this is a heading for h1</h1>
+    <h2>this is a heading for h2</h2>
+    <h3>this is a heading for h3</h3>
+    <h4>this is a heading for h4</h4>
+</div>

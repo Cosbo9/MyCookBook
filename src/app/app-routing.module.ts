@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MaterialTestsComponent } from './material/material-tests/material-tests.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'mat-test', component: MaterialTestsComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
