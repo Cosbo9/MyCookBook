@@ -1,10 +1,13 @@
-<div style="display: flex; justify-content: space-between;">
-    <div class="mat-headline" style="margin: 5px; cursor: pointer;" routerLink="/">Recipe Book</div>
-    <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="new-recipe">new recipe</button>
-            <button mat-menu-item routerLink="auth">Sign In</button>
-        </mat-menu>
-    </button>
-</div>
+
+<p>
+    <mat-toolbar style="justify-content: space-between;">
+        <span routerLink="/" style="cursor: pointer;">Recipe Book</span>
+        <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="new-recipe">new recipe</button>
+                <button mat-menu-item routerLink="auth">Sign In</button>
+            </mat-menu>
+        </button>
+    </mat-toolbar>
+</p>

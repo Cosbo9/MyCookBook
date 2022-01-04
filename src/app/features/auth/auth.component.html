@@ -1,1 +1,59 @@
-<p>auth works!</p>
+<!-- sign in card -->
+<form class="authCard">
+    <mat-card *ngIf="signIn" class="cardStyle">
+        <div class="mat-display-2 submitArea">Sign In</div>
+        <div class="submitArea">
+            <mat-form-field appearance="fill" style="width: 30vw;">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="email@example.com" [formControl]="email" required #uEmail>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="submitArea">
+            <mat-form-field appearance="fill" style="width: 30vw;">
+                <mat-label>Enter your password</mat-label>
+                <input type="password" matInput required [formControl]="password" #uPass>
+                <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="submitArea">
+            <button mat-raised-button color="primary" style="width: 20vw;" (click)="onSubmit(uEmail.value, uPass.value)">Submit</button>
+        </div>
+        <button mat-button (click)="signIn = !signIn">Not already a member? Sign up!</button>
+    </mat-card>
+</form>
+<!-- sign in card end -->
+
+<!-- sign up card -->
+<form #f="ngForm" class="authCard">
+    <mat-card *ngIf="!signIn" class="cardStyle">
+        <div class="mat-display-2 submitArea">Sign Up!</div>
+        <div class="submitArea">
+            <mat-form-field appearance="fill" style="width: 30vw;">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="email@example.com" [formControl]="email" required #uEmail>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="submitArea">
+            <mat-form-field appearance="fill" style="width: 30vw;">
+                <mat-label>Enter your password</mat-label>
+                <input matInput type="password" minlength="8" required [formControl]="password" #uPass>
+                <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="submitArea">
+            <mat-form-field appearance="fill" style="width: 30vw;">
+                <mat-label>Confirm your password</mat-label>
+                <input matInput type="password" required [formControl]="passwordConf" #uPassConf>
+                <mat-error *ngIf="passwordConf">{{checkPassErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="submitArea">
+            <button mat-raised-button color="primary" style="width: 20vw;">Submit</button>
+        </div>
+        <button mat-button (click)="signIn = !signIn">Not already a member? Sign up!</button>
+    </mat-card>
+</form>
+
+<!-- sign up card end -->
