@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { map } from 'rxjs/operators'
@@ -9,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private auth: AngularFireAuth) { }
+  constructor(private auth: AngularFireAuth) { }
 
   signIn(email: string, password: string) {
     this.auth.signInWithEmailAndPassword(email, password)
@@ -31,5 +30,9 @@ export class AuthService {
 
   loggedInUser() {
     return this.auth.authState;
+  }
+
+  signOut() {
+    this.auth.signOut();
   }
 }

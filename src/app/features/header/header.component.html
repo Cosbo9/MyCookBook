@@ -7,6 +7,7 @@
             <mat-menu #menu="matMenu">
                 <button mat-menu-item routerLink="new-recipe">new recipe</button>
                 <button mat-menu-item routerLink="auth">Sign In</button>
+                <button mat-menu-item (click)="onSignOut()">Sign Out</button>
             </mat-menu>
         </button>
     </mat-toolbar>

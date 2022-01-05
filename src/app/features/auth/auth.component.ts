@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -12,18 +14,32 @@ export class AuthComponent implements OnInit {
   password = new FormControl('', [Validators.required, Validators.minLength(8)])
   passwordConf = new FormControl('', [Validators.required])
   signIn = true
+  hide = true
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private authServ: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.formGroup = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      passwordConf: ['', [Validators.required]]
-    })
+    // trying to get password confermation validator going
+    // this.formGroup = this.formBuilder.group({
+    //   password: ['', [Validators.required, Validators.minLength(8)]],
+    //   passwordConf: ['', [Validators.required]]
+    // })
   }
 
-  onSubmit(email: string, password: string) {
+  onSignIn(email: string, password: string) {
     console.log(email, password)
+    this.authServ.signIn(email, password)
+    if (this.authServ.isLoggedIn()) {
+      this.router.navigate(['/'])
+    }
+  }
+
+  onSignUp(email: string, password: string) {
+    console.log(email, password)
+    this.authServ.signUp(email, password)
+    if (this.authServ.isLoggedIn()) {
+      this.router.navigate(['/'])
+    }
   }
 
   // error messages for Validators
