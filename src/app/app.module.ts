@@ -15,9 +15,6 @@ import { AuthComponent } from './features/auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideAuth, getAuth,  } from '@angular/fire/auth';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 

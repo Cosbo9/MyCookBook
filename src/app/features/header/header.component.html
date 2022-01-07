@@ -1,13 +1,14 @@
-
 <p>
-    <mat-toolbar style="justify-content: space-between;">
+    <mat-toolbar class="header">
         <span routerLink="/" style="cursor: pointer;">Recipe Book</span>
         <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
             <mat-icon>menu</mat-icon>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item routerLink="new-recipe">new recipe</button>
-                <button mat-menu-item routerLink="auth">Sign In</button>
-                <button mat-menu-item (click)="onSignOut()">Sign Out</button>
+                <button mat-menu-item style="font-weight: bold;" routerLink="new-recipe" *ngIf="isLoggedIn">New
+                    Recipe</button>
+                <button mat-menu-item style="font-weight: bold;" routerLink="auth" *ngIf="!isLoggedIn">Sign In</button>
+                <button mat-menu-item style="font-weight: bold;" (click)="onSignOut()" *ngIf="isLoggedIn">Sign
+                    Out</button>
             </mat-menu>
         </button>
     </mat-toolbar>

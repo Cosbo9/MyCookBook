@@ -1,0 +1,40 @@
+.cardStyle {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    margin-top: 5vh;
+    height: 60vh;
+    justify-content: space-around;
+}
+
+.cardContent {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.addIcon {
+    display: flex; 
+    justify-content: end; 
+    margin-right: 3%;
+    cursor: pointer;
+}

@@ -11,6 +11,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card'
 import { MatInputModule } from '@angular/material/input'
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const MaterialComponents = [
   MatTabsModule,
@@ -24,7 +26,9 @@ const MaterialComponents = [
   MatDialogModule,
   MatToolbarModule,
   MatCardModule,
-  MatInputModule
+  MatInputModule,
+  MatExpansionModule,
+  MatTooltipModule,
 ]
 
 
