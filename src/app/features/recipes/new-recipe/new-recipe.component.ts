@@ -15,12 +15,12 @@ export class NewRecipeComponent implements OnInit {
   }
 
   onSubmit(data: NgForm) {
-    console.log(data.form.value.recipeName)
+    console.log(data.form.value)
     console.log(data.form.value.ingredient)
   }
 
-  addIngredient(index: any) {
-    this.ingredients.push(index)
+  addIngredient() {
+    this.ingredients.push('')
   }
 
   removeIngredient(index: any) {

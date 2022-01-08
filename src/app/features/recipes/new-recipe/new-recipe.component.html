@@ -1,49 +1,81 @@
+<!-- New recipe card start -->
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" style="display: flex; justify-content: center;">
     <mat-card class="cardStyle">
+        <!-- card title start -->
         <div>
             <mat-card-title class="title">Create Your New Recipe!</mat-card-title>
             <mat-divider></mat-divider>
         </div>
+        <!-- card title end -->
+
+        <!-- card content start -->
         <div class="cardContent">
             <div class="recipeName center">
                 <mat-form-field appearance="outline" style="width: 60vw;">
                     <mat-label>Recipe Name</mat-label>
-                    <input matInput placeholder="Placeholder">
+                    <input matInput placeholder="Recipe Name" #recipeName>
                 </mat-form-field>
             </div>
-            <div class="ingredientNames center" *ngFor="let ingredient of ingredients; let i=index">
-                <mat-form-field appearance="outline" style="width: 60vw;">
-                    <mat-label>Ingredient Name</mat-label>
-                    <input matInput placeholder="Placeholder">
-                    <div style="display: flex; justify-content: end;">
-                        <span class="material-icons" matTooltip="Add New Ingredient" (click)="addIngredient(i)">
-                            add
-                        </span>
-                        <span class="material-icons" matTooltip="Remove This Ingredient" (click)="removeIngredient(i)">
-                            remove
-                        </span>
-                    </div>
-                </mat-form-field>
+            <!-- card ingredient field start -->
+            <div class="center" style="margin-bottom: 1%;">
+                <mat-accordion style="width: 60vw;">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Ingredients
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Add your ingredients here!
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div style="display: flex; justify-content: end; margin-bottom: 1%;">
+                            <span class="material-icons" matTooltip="Add New Ingredient" (click)="addIngredient()">
+                                add_box
+                            </span>
+                        </div>
+                        <mat-form-field appearance="outline" style="width: 50vw"
+                            *ngFor="let ingredient of ingredients; let i=index">
+                            <div class="ingredientNames center">
+                                <input matInput placeholder="Ingredient" #ingredient>
+                                <div style="display: flex; justify-content: end;">
+                                    <span class="material-icons" matTooltip="Remove This Ingredient"
+                                        (click)="removeIngredient(i)">
+                                        delete
+                                    </span>
+                                </div>
+                            </div>
+                        </mat-form-field>
+                    </mat-expansion-panel>
+                </mat-accordion>
             </div>
+            <!-- card ingredient field end -->
+
+            <!-- card recipe image field start -->
             <div class="imageURL center">
                 <mat-form-field appearance="outline" style="width: 60vw;">
                     <mat-label>Image URL</mat-label>
-                    <input matInput placeholder="Placeholder" formControlName="imagePath" #imagePath>
+                    <input matInput placeholder="Image URL" formControlName="imagePath" #imagePath>
                     <div *ngIf="imagePath.value"><img [src]="imagePath.value" alt="recipe image"
                             style="max-height: 60%; max-width: 60%;">
                     </div>
                 </mat-form-field>
             </div>
+            <!-- card recipe image field end -->
+
+            <!-- card recipe description start -->
             <div class="recipeDesc center">
                 <mat-form-field appearance="outline" style="width: 60vw;">
                     <mat-label>Recipe description</mat-label>
-                    <textarea matInput placeholder="Description"></textarea>
+                    <textarea matInput placeholder="Description" #recpieDesc></textarea>
                 </mat-form-field>
             </div>
+            <!-- card recipe description end -->
         </div>
+        <!-- card content end -->
         <div class="buttons">
             <button mat-raised-button color="primary" style="width: 20vw;">Submit</button>
-            <button mat-raised-button color="warn" style="width: 20vw;">Cancel</button>
+            <button type="button" mat-raised-button color="warn" style="width: 20vw;">Cancel</button>
         </div>
     </mat-card>
 </form>
+<!-- New recipe card end -->
