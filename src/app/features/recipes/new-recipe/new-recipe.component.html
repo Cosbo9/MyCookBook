@@ -4,7 +4,6 @@
         <!-- card title start -->
         <div>
             <mat-card-title class="title">Create Your New Recipe!</mat-card-title>
-            <mat-divider></mat-divider>
         </div>
         <!-- card title end -->
 
@@ -14,6 +13,7 @@
                 <mat-form-field appearance="outline" style="width: 60vw;">
                     <mat-label>Recipe Name</mat-label>
                     <input matInput placeholder="Recipe Name" #recipeName>
+                    {{ recipeName.value }}
                 </mat-form-field>
             </div>
             <!-- card ingredient field start -->
@@ -36,7 +36,7 @@
                         <mat-form-field appearance="outline" style="width: 50vw"
                             *ngFor="let ingredient of ingredients; let i=index">
                             <div class="ingredientNames center">
-                                <input matInput placeholder="Ingredient" #ingredient>
+                                <input matInput placeholder="Ingredient" #ingredientName>
                                 <div style="display: flex; justify-content: end;">
                                     <span class="material-icons" matTooltip="Remove This Ingredient"
                                         (click)="removeIngredient(i)">
@@ -44,6 +44,7 @@
                                     </span>
                                 </div>
                             </div>
+                            {{ ingredientName.value }}
                         </mat-form-field>
                     </mat-expansion-panel>
                 </mat-accordion>
@@ -67,6 +68,7 @@
                 <mat-form-field appearance="outline" style="width: 60vw;">
                     <mat-label>Recipe description</mat-label>
                     <textarea matInput placeholder="Description" #recpieDesc></textarea>
+                    {{recpieDesc.value}}
                 </mat-form-field>
             </div>
             <!-- card recipe description end -->
