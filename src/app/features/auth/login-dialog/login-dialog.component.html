@@ -1,0 +1,19 @@
+<form #f='ngForm'>
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="email@example.com" required type="email" ngModel name="uEmail"
+            [formControl]="email">
+        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput ngModel required [formControl]="password" name="uPass">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+    <button mat-button type="button" [routerLink]="'/sign-up'" (click)="onRoute()">Not already a member? Sign up!</button>
+</form>

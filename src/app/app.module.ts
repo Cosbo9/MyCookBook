@@ -11,12 +11,13 @@ import { ShoppingListComponent } from './features/shopping-list/shopping-list.co
 import { NewRecipeComponent } from './features/recipes/new-recipe/new-recipe.component';
 import { HomeComponent } from './features/home/home.component';
 import { environment } from '../environments/environment';
-import { AuthComponent } from './features/auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
+import { LoginDialogComponent } from './features/auth/login-dialog/login-dialog.component';
+import { SignUpComponent } from './features/auth/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     ShoppingListComponent,
     NewRecipeComponent,
     HomeComponent,
-    AuthComponent,
+    LoginDialogComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

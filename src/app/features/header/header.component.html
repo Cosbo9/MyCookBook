@@ -6,7 +6,8 @@
             <mat-menu #menu="matMenu">
                 <button mat-menu-item style="font-weight: bold;" routerLink="new-recipe" *ngIf="isLoggedIn">New
                     Recipe</button>
-                <button mat-menu-item style="font-weight: bold;" routerLink="auth" *ngIf="!isLoggedIn">Sign In</button>
+                <button mat-menu-item style="font-weight: bold;" (click)="onSignIn()" *ngIf="!isLoggedIn">Sign
+                    In</button>
                 <button mat-menu-item style="font-weight: bold;" (click)="onSignOut()" *ngIf="isLoggedIn">Sign
                     Out</button>
             </mat-menu>

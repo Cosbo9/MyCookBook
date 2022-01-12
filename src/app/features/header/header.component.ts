@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { LoginDialogComponent } from 'src/app/features/auth/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false
 
-  constructor(private authServ: AuthService) { }
+  constructor(private authServ: AuthService, public loginDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.authServ.isLoggedIn().subscribe((uStatus) => {
@@ -19,5 +21,9 @@ export class HeaderComponent implements OnInit {
 
   onSignOut() {
     this.authServ.signOut();
+  }
+
+  onSignIn() {
+    let loginRef = this.loginDialog.open(LoginDialogComponent)
   }
 }
