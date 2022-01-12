@@ -18,7 +18,6 @@ export class NewRecipeComponent implements OnInit {
     console.log(data)
     console.log(data.form)
     console.log(data.form.value)
-    console.log(data.form.value.ingredientName.value)
   }
 
   addIngredient() {

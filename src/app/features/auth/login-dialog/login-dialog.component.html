@@ -1,19 +1,51 @@
-<form #f='ngForm'>
-    <mat-form-field appearance="fill">
-        <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="email@example.com" required type="email" ngModel name="uEmail"
-            [formControl]="email">
-        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+<form #f="ngForm" (submit)="onSubmit(f)" class="dialogCard">
+  <div class="center" style="margin-bottom: -7%;">
+    <p class="mat-display-2">Sign In!</p>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="center">
+    <mat-form-field class="inputField" appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="email@example.com"
+        required
+        type="email"
+        ngModel
+        name="uEmail"
+      />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
     </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>Enter your password</mat-label>
-        <input matInput ngModel required [formControl]="password" name="uPass">
-        <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-        <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
+  </div>
+  <div class="center">
+    <mat-form-field class="inputField" appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input
+        [type]="hide ? 'password' : 'text'"
+        matInput
+        ngModel
+        required
+        name="uPass"
+      />
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error *ngIf="password.invalid">{{
+        getPassErrorMessage()
+      }}</mat-error>
     </mat-form-field>
+  </div>
+  <div class="submitBtn">
     <button type="submit" mat-raised-button color="primary">Submit</button>
-    <button mat-button type="button" [routerLink]="'/sign-up'" (click)="onRoute()">Not already a member? Sign up!</button>
+  </div>
+  <div class="signUp">
+    <button
+      mat-button
+      type="button"
+      [routerLink]="'/sign-up'"
+      (click)="onRoute()"
+    >
+      Not already a member? Sign up!
+    </button>
+  </div>
 </form>

@@ -1,39 +1,73 @@
-<form #f="ngForm">
+<div class="signUp">
+  <form #f="ngForm" (submit)="onSubmit(f)">
     <mat-card class="cardStyle">
-        <div class="mat-display-2 submitArea" style="margin-bottom: 2%; text-decoration: underline;">Sign Up!</div>
-        <div class="submitArea">
-            <mat-form-field appearance="fill" style="width: 30vw;">
-                <mat-label>Enter your email</mat-label>
-                <input matInput placeholder="email@example.com" [formControl]="email" required #uEmail>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field>
-        </div>
-        <div class="submitArea">
-            <mat-form-field appearance="fill" style="width: 30vw;">
-                <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" minlength="8" required [formControl]="password"
-                    #uPass>
-                <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-                <mat-error *ngIf="password.invalid">{{getPassErrorMessage()}}</mat-error>
-            </mat-form-field>
-        </div>
-        <!-- Password confirmation not working, need to figure out
-            custom validator and have the error state match FormControl -->
-        <!-- <div class="submitArea">
-            <mat-form-field appearance="fill" style="width: 30vw;">
-                <mat-label>Confirm your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" required [formControl]="passwordConf" #uPassConf>
-                <button mat-icon-button matSuffix (click)="hide = !hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-                <mat-error *ngIf="passwordConf">{{checkPassErrorMessage()}}</mat-error>
-            </mat-form-field>
-        </div> -->
-        <div class="submitArea">
-            <button type="submit" mat-raised-button color="primary" style="width: 20vw;"
-                (click)="onSignUp(uEmail.value, uPass.value)">Submit</button>
-        </div>
+      <div
+        class="mat-display-2 submitArea"
+        style="margin-bottom: 2%; text-decoration: underline; justify-content: center;"
+      >
+        Sign Up!
+      </div>
+      <div class="submitArea">
+        <mat-form-field appearance="fill" style="width: 45vw">
+          <mat-label>Enter your email</mat-label>
+          <input
+            matInput
+            placeholder="email@example.com"
+            name="uEmail"
+            ngModel
+            required
+            #uEmail
+          />
+          <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="submitArea">
+        <mat-form-field appearance="fill" style="width: 45vw">
+          <mat-label>Enter your password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            minlength="8"
+            required
+            ngModel
+            name="uPass"
+            #uPass
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="password.invalid">{{
+            getPassErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <!-- Password confirmation not working, need to figure out
+                custom validator and have the error state match FormControl -->
+      <!-- <div class="submitArea">
+                  <mat-form-field appearance="fill" style="width: 30vw;">
+                    <mat-label>Confirm your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" required [formControl]="passwordConf" #uPassConf>
+                    <button mat-icon-button matSuffix (click)="hide = !hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="passwordConf">{{checkPassErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                </div> -->
+      <div class="submitArea">
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          style="width: 20vw"
+        >
+          Submit
+        </button>
+      </div>
     </mat-card>
-</form>
+  </form>
+</div>

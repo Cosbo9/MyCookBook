@@ -24,6 +24,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onSignIn() {
-    let loginRef = this.loginDialog.open(LoginDialogComponent)
+    let loginRef = this.loginDialog.open(LoginDialogComponent, {
+      height: '60vh',
+      width: '80vw'
+    })
   }
 }

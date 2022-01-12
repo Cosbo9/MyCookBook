@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +13,7 @@ export class SignUpComponent implements OnInit {
   password = new FormControl('', [Validators.required, Validators.minLength(8)])
   hide = true
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +32,15 @@ export class SignUpComponent implements OnInit {
     return this.password.hasError('minlength') ? 'Password must be 8 characters' : ''
   }
 
-  onSignUp(email: string, password: string) {}
+  onSubmit(formData: NgForm) {
+    let email = formData.form.value.uEmail
+    let password = formData.form.value.uPass
+    this.authService.signUp(email, password)
+    this.authService.isLoggedIn().subscribe(data => {
+      if (data) {
+        this.router.navigate(['/'])
+      }
+    })
+  }
 
 }

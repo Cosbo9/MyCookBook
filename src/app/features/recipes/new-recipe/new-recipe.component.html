@@ -4,6 +4,8 @@
         <!-- card title start -->
         <div>
             <mat-card-title class="title">Create Your New Recipe!</mat-card-title>
+            <br>
+            <mat-divider></mat-divider>
         </div>
         <!-- card title end -->
 
@@ -12,9 +14,8 @@
             <div class="recipeName center">
                 <mat-form-field appearance="outline" style="width: 60vw;">
                     <mat-label>Recipe Name</mat-label>
-                    <input matInput placeholder="Recipe Name" #recipeName>
-                    {{ recipeName.value }}
-                </mat-form-field>
+                    <input matInput placeholder="Recipe Name" #recipeName ngModel name="recipeName">
+                  </mat-form-field>
             </div>
             <!-- card ingredient field start -->
             <div class="center" style="margin-bottom: 1%;">
@@ -36,7 +37,7 @@
                         <mat-form-field appearance="outline" style="width: 50vw"
                             *ngFor="let ingredient of ingredients; let i=index">
                             <div class="ingredientNames center">
-                                <input matInput placeholder="Ingredient" #ingredientName>
+                                <input matInput placeholder="Ingredient" ngModel name="ingredientName" #ingredientName>
                                 <div style="display: flex; justify-content: end;">
                                     <span class="material-icons" matTooltip="Remove This Ingredient"
                                         (click)="removeIngredient(i)">
@@ -44,7 +45,6 @@
                                     </span>
                                 </div>
                             </div>
-                            {{ ingredientName.value }}
                         </mat-form-field>
                     </mat-expansion-panel>
                 </mat-accordion>
@@ -55,7 +55,7 @@
             <div class="imageURL center">
                 <mat-form-field appearance="outline" style="width: 60vw;">
                     <mat-label>Image URL</mat-label>
-                    <input matInput placeholder="Image URL" formControlName="imagePath" #imagePath>
+                    <input matInput placeholder="Image URL" ngModel name="imagePath" #imagePath>
                     <div *ngIf="imagePath.value"><img [src]="imagePath.value" alt="recipe image"
                             style="max-height: 60%; max-width: 60%;">
                     </div>
@@ -67,16 +67,16 @@
             <div class="recipeDesc center">
                 <mat-form-field appearance="outline" style="width: 60vw;">
                     <mat-label>Recipe description</mat-label>
-                    <textarea matInput placeholder="Description" #recpieDesc></textarea>
-                    {{recpieDesc.value}}
+                    <textarea matInput placeholder="Description" ngModel name="description" #recpieDesc></textarea>
                 </mat-form-field>
             </div>
             <!-- card recipe description end -->
         </div>
         <!-- card content end -->
         <div class="buttons">
-            <button mat-raised-button color="primary" style="width: 20vw;">Submit</button>
-            <button type="button" mat-raised-button color="warn" style="width: 20vw;">Cancel</button>
+            <mat-divider></mat-divider>
+            <button mat-raised-button color="primary" style="width: 20vw; margin-top: 2%;">Submit</button>
+            <button type="button" mat-raised-button color="warn" style="width: 20vw; margin-top: 2%;">Cancel</button>
         </div>
     </mat-card>
 </form>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-dialog',
@@ -12,9 +14,18 @@ export class LoginDialogComponent implements OnInit {
   password = new FormControl('', [Validators.required, Validators.minLength(8)])
   hide = true
 
-  constructor(public loginDialog: MatDialog) { }
+  constructor(public loginDialog: MatDialog, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(formData: NgForm) {
+    let email = formData.form.value.uEmail
+    let password = formData.form.value.uPass
+    this.authService.signIn(email, password)
+    if (this.authService.isLoggedIn().subscribe()) {
+      this.loginDialog.closeAll()
+    }
   }
 
   onRoute() {
