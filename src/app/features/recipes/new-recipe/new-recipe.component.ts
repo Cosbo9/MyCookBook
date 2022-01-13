@@ -15,8 +15,6 @@ export class NewRecipeComponent implements OnInit {
   }
 
   onSubmit(data: NgForm) {
-    console.log(data)
-    console.log(data.form)
     console.log(data.form.value)
   }
 
