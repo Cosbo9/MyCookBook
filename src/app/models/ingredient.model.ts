@@ -1,3 +1,6 @@
 export class Ingredient {
-    constructor(public name: string) {}
+  public name: string;
+    constructor(public ingredientName: string) {
+      this.name = ingredientName
+    }
 }

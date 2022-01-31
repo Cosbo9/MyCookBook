@@ -18,7 +18,28 @@
                 </mat-form-field>
             </div>
             <!-- card ingredient field start -->
-            <div class="center" style="margin-bottom: 1%;">
+
+              <div class="center">
+                <mat-accordion>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Ingredients
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div>
+                      <mat-form-field>
+                        <input #ing type="text" matInput ngModel name="ingredientName">
+                      </mat-form-field>
+                      <button type="button" (click)="onSave(ing)">Save</button>
+                    </div>
+                    <div *ngFor="let ingredient of ingredients">
+                      {{ ingredient }}
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+            <!-- <div class="center" style="margin-bottom: 1%;">
                 <mat-accordion style="width: 60vw;">
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
@@ -35,8 +56,8 @@
                             </span>
                         </div>
                         <mat-form-field appearance="outline" style="width: 50vw"
-                            *ngFor="let ingredient of ingredients; let i=index">
-                            <div class="ingredientNames center">
+                            *ngFor="let ingredient of ingredients; let i=index" >
+                            <div class="ingredientNames center" #ingredientField>
                                 <input matInput placeholder="Ingredient" ngModel name="ingredientName" #ingredientName>
                                 <div style="display: flex; justify-content: end;">
                                     <span class="material-icons" matTooltip="Remove This Ingredient"
@@ -48,7 +69,7 @@
                         </mat-form-field>
                     </mat-expansion-panel>
                 </mat-accordion>
-            </div>
+            </div> -->
             <!-- card ingredient field end -->
 
             <!-- card recipe image field start -->
