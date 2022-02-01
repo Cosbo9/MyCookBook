@@ -13,6 +13,11 @@
     flex-direction: column;
 }
 
+.ingredientList {
+  width: 75%;
+  margin-bottom: 10px;
+}
+
 .center {
     display: flex;
     justify-content: center;
@@ -34,8 +39,14 @@
 }
 
 .addIcon {
-    display: flex; 
-    justify-content: end; 
+    display: flex;
+    justify-content: end;
     margin-right: 3%;
     cursor: pointer;
+}
+
+.ingCard {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }

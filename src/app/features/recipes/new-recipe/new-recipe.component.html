@@ -1,104 +1,129 @@
 <!-- New recipe card start -->
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" style="display: flex; justify-content: center;">
-    <mat-card class="cardStyle">
-        <!-- card title start -->
-        <div>
-            <mat-card-title class="title">Create Your New Recipe!</mat-card-title>
-            <br>
+<form
+  #f="ngForm"
+  (ngSubmit)="onSubmit(f)"
+  style="display: flex; justify-content: center"
+>
+  <mat-card class="cardStyle">
+    <!-- card title start -->
+    <div>
+      <mat-card-title class="title">Create Your New Recipe!</mat-card-title>
+      <br />
+      <mat-divider></mat-divider>
+    </div>
+    <!-- card title end -->
+
+    <!-- card content start -->
+    <div class="cardContent">
+      <div class="recipeName center">
+        <mat-form-field appearance="outline" style="width: 60vw">
+          <mat-label>Recipe Name</mat-label>
+          <input
+            matInput
+            placeholder="Recipe Name"
+            ngModel
+            #recipeName
+            ngModel
+            name="recipeName"
+          />
+        </mat-form-field>
+      </div>
+      <!-- card ingredient field start -->
+
+      <div class="center">
+        <mat-accordion class="ingredientList">
+          <mat-expansion-panel style="background-color: beige">
+            <mat-expansion-panel-header style="background-color: white">
+              <mat-panel-title class="center"> Ingredients </mat-panel-title>
+            </mat-expansion-panel-header>
             <mat-divider></mat-divider>
-        </div>
-        <!-- card title end -->
-
-        <!-- card content start -->
-        <div class="cardContent">
-            <div class="recipeName center">
-                <mat-form-field appearance="outline" style="width: 60vw;">
-                    <mat-label>Recipe Name</mat-label>
-                    <input matInput placeholder="Recipe Name" ngModel #recipeName ngModel name="recipeName">
+            <div>
+              <mat-panel-title class="center">
+                Add your ingredient's names here!
+              </mat-panel-title>
+              <hr>
+              <div class="center" style="align-items: flex-start;">
+                <mat-form-field>
+                  <input
+                    #ing
+                    type="text"
+                    matInput
+                    ngModel
+                    name="ingredientNames"
+                  />
                 </mat-form-field>
-            </div>
-            <!-- card ingredient field start -->
-
-              <div class="center">
-                <mat-accordion>
-                  <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        Ingredients
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <div>
-                      <mat-form-field>
-                        <input #ing type="text" matInput ngModel name="ingredientName">
-                      </mat-form-field>
-                      <button type="button" (click)="onSave(ing)">Save</button>
-                    </div>
-                    <div *ngFor="let ingredient of ingredients">
-                      {{ ingredient }}
-                    </div>
-                  </mat-expansion-panel>
-                </mat-accordion>
+                <button mat-stroked-button type="button" style="background-color: white;" (click)="onSave(ing)">
+                  Save
+                </button>
               </div>
-            <!-- <div class="center" style="margin-bottom: 1%;">
-                <mat-accordion style="width: 60vw;">
-                    <mat-expansion-panel>
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                Ingredients
-                            </mat-panel-title>
-                            <mat-panel-description>
-                                Add your ingredients here!
-                            </mat-panel-description>
-                        </mat-expansion-panel-header>
-                        <div style="display: flex; justify-content: end; margin-bottom: 1%;">
-                            <span class="material-icons" matTooltip="Add New Ingredient" (click)="addIngredient()">
-                                add_box
-                            </span>
-                        </div>
-                        <mat-form-field appearance="outline" style="width: 50vw"
-                            *ngFor="let ingredient of ingredients; let i=index" >
-                            <div class="ingredientNames center" #ingredientField>
-                                <input matInput placeholder="Ingredient" ngModel name="ingredientName" #ingredientName>
-                                <div style="display: flex; justify-content: end;">
-                                    <span class="material-icons" matTooltip="Remove This Ingredient"
-                                        (click)="removeIngredient(i)">
-                                        delete
-                                    </span>
-                                </div>
-                            </div>
-                        </mat-form-field>
-                    </mat-expansion-panel>
-                </mat-accordion>
-            </div> -->
-            <!-- card ingredient field end -->
-
-            <!-- card recipe image field start -->
-            <div class="imageURL center">
-                <mat-form-field appearance="outline" style="width: 60vw;">
-                    <mat-label>Image URL</mat-label>
-                    <input matInput placeholder="Image URL" ngModel name="imagePath" #imagePath>
-                    <div *ngIf="imagePath.value"><img [src]="imagePath.value" alt="recipe image"
-                            style="max-height: 60%; max-width: 60%;">
-                    </div>
-                </mat-form-field>
             </div>
-            <!-- card recipe image field end -->
-
-            <!-- card recipe description start -->
-            <div class="recipeDesc center">
-                <mat-form-field appearance="outline" style="width: 60vw;">
-                    <mat-label>Recipe description</mat-label>
-                    <textarea matInput placeholder="Description" ngModel name="description" #recpieDesc></textarea>
-                </mat-form-field>
+            <div *ngFor="let ingredient of ingredients; let i in index">
+              <mat-card class="ingCard"
+                >{{ ingredient }}
+                <mat-icon style="cursor: pointer;" (click)="removeIngredient(i)">delete</mat-icon>
+              </mat-card>
             </div>
-            <!-- card recipe description end -->
-        </div>
-        <!-- card content end -->
-        <div class="buttons">
-            <mat-divider></mat-divider>
-            <button mat-raised-button color="primary" style="width: 20vw; margin-top: 2%;">Submit</button>
-            <button type="button" mat-raised-button color="warn" style="width: 20vw; margin-top: 2%;">Cancel</button>
-        </div>
-    </mat-card>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <!-- card ingredient field end -->
+
+      <!-- card recipe image field start -->
+      <div class="imageURL center">
+        <mat-form-field appearance="outline" style="width: 60vw">
+          <mat-label>Image URL</mat-label>
+          <input
+            matInput
+            placeholder="Image URL"
+            ngModel
+            name="imagePath"
+            #imagePath
+          />
+          <div *ngIf="imagePath.value">
+            <img
+              [src]="imagePath.value"
+              alt="recipe image"
+              style="max-height: 60%; max-width: 60%"
+            />
+          </div>
+        </mat-form-field>
+      </div>
+      <!-- card recipe image field end -->
+
+      <!-- card recipe description start -->
+      <div class="recipeDesc center">
+        <mat-form-field appearance="outline" style="width: 60vw">
+          <mat-label>Recipe description</mat-label>
+          <textarea
+            matInput
+            placeholder="Description"
+            ngModel
+            name="description"
+            #recpieDesc
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <!-- card recipe description end -->
+    </div>
+    <!-- card content end -->
+    <div class="buttons">
+      <mat-divider></mat-divider>
+      <button
+        mat-raised-button
+        color="primary"
+        style="width: 20vw; margin-top: 2%"
+      >
+        Submit
+      </button>
+      <button
+        type="button"
+        mat-raised-button
+        color="warn"
+        style="width: 20vw; margin-top: 2%"
+      >
+        Cancel
+      </button>
+    </div>
+  </mat-card>
 </form>
 <!-- New recipe card end -->

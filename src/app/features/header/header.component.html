@@ -1,16 +1,42 @@
 <p>
-    <mat-toolbar class="header">
-        <span routerLink="/" style="cursor: pointer;">Recipe Book</span>
-        <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
-            <mat-icon>menu</mat-icon>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item style="font-weight: bold;" routerLink="new-recipe" *ngIf="isLoggedIn">New
-                    Recipe</button>
-                <button mat-menu-item style="font-weight: bold;" (click)="onSignIn()" *ngIf="!isLoggedIn">Sign
-                    In</button>
-                <button mat-menu-item style="font-weight: bold;" (click)="onSignOut()" *ngIf="isLoggedIn">Sign
-                    Out</button>
-            </mat-menu>
+  <mat-toolbar class="header">
+    <span routerLink="/" style="cursor: pointer">Recipe Book</span>
+    <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          style="font-weight: bold"
+          routerLink="new-recipe"
+          *ngIf="isLoggedIn"
+        >
+          New Recipe
         </button>
-    </mat-toolbar>
+        <button
+          mat-menu-item
+          style="font-weight: bold"
+          (click)="onSignIn()"
+          *ngIf="!isLoggedIn"
+        >
+          Sign In
+        </button>
+        <button
+          mat-menu-item
+          style="font-weight: bold"
+          routerLink="saved-recipes"
+          *ngIf="isLoggedIn"
+        >
+          Saved Recipes
+        </button>
+        <button
+          mat-menu-item
+          style="font-weight: bold"
+          (click)="onSignOut()"
+          *ngIf="isLoggedIn"
+        >
+          Sign Out
+        </button>
+      </mat-menu>
+    </button>
+  </mat-toolbar>
 </p>
