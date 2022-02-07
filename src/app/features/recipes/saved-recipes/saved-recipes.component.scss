@@ -1,0 +1,57 @@
+.recipeImg {
+width: 350px;
+}
+
+.recipeName {
+    text-transform: capitalize;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.expansionCard {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 70vw;
+}
+
+.cardBackground {
+    height: 85vh;
+    overflow: auto;
+    background-color: rgba($color: #eeeeee, $alpha: 1.0);
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.refreshBtn {
+    display: flex;
+    justify-content: end;
+}
+
+.ingredients {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.editIcon {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.ingredientField {
+    display: flex;
+    justify-content: space-between;
+}

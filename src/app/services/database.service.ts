@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Recipe } from '../models/recipe.model';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -24,7 +25,7 @@ export class DatabaseService {
   }
 
   getRecipeList() {
-    return this.http.get(
+    return this.http.get<Recipe>(
       `https://mycookbook-efbac-default-rtdb.firebaseio.com/${this.user}/recipes.json`
     );
   }

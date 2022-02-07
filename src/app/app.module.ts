@@ -19,6 +19,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { LoginDialogComponent } from './features/auth/login-dialog/login-dialog.component';
 import { SignUpComponent } from './features/auth/sign-up/sign-up.component';
 import { SavedRecipesComponent } from './features/recipes/saved-recipes/saved-recipes.component';
+import { EditRecipeComponent } from './features/recipes/saved-recipes/edit-recipe/edit-recipe.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SavedRecipesComponent } from './features/recipes/saved-recipes/saved-re
     LoginDialogComponent,
     SignUpComponent,
     SavedRecipesComponent,
+    EditRecipeComponent,
   ],
   imports: [
     BrowserModule,

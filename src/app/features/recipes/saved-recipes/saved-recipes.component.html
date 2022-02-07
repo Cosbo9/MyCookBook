@@ -1,8 +1,54 @@
-<p>saved-recipes works!</p>
-<div>
-  <ul *ngFor="let recipe of recipeList">
-    <li>
-      {{ recipe.description }}
-    </li>
-  </ul>
-</div>
+<form #f="ngForm">
+  <mat-card class="cardBackground">
+    <mat-card-title class="title">Your Saved Recipes</mat-card-title>
+    <div class="refreshBtn">
+      <button mat-raised-button (click)="getRecipes(f)">Refresh recipe list</button>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-accordion *ngFor="let recipe of recipeList" class="center">
+      <mat-expansion-panel hideToggle class="expansionCard">
+        <mat-expansion-panel-header>
+          <mat-panel-title ngModel class="recipeName" name="recipeName">
+            <p>{{ recipe.recipeName }}</p>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-divider></mat-divider>
+        <br>
+        <div class="imageContainer">
+          <mat-card ngModel name="recipeImg">
+            <img class="recipeImg" src="{{ recipe.imagePath }}" alt="recipe image">
+          </mat-card>
+        </div>
+        <div class="ingredientOption">
+          <div class="ingredients" *ngFor="let ingredient of recipe.ingredientNames; let i in index">
+            <!-- <mat-card ngModel name="ingredients"> -->
+            <ul>
+              <li>
+                <div class="ingredientField">
+                  <p>{{ ingredient }}</p>
+                </div>
+              </li>
+            </ul>
+            <!-- </mat-card> -->
+          </div>
+        </div>
+        <div class="recipeDesc">
+          <p>recipe description</p>
+          <mat-card>
+            <p>
+              {{ recipe.description }}
+            </p>
+          </mat-card>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+        <br>
+        <div class="editIcon">
+          <mat-icon matTooltip="Edit this recipe" (click)="onEdit()">edit</mat-icon>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+</form>
