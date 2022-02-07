@@ -32,7 +32,7 @@
 
       <div class="center">
         <mat-accordion class="ingredientList">
-          <mat-expansion-panel style="background-color: beige">
+          <mat-expansion-panel>
             <mat-expansion-panel-header style="background-color: white">
               <mat-panel-title class="center"> Ingredients </mat-panel-title>
             </mat-expansion-panel-header>
@@ -120,6 +120,7 @@
         mat-raised-button
         color="warn"
         style="width: 20vw; margin-top: 2%"
+        (click)="onCancel(f)"
       >
         Cancel
       </button>
