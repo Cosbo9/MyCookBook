@@ -38,29 +38,71 @@
             </mat-expansion-panel-header>
             <mat-divider></mat-divider>
             <div>
+              <br />
               <mat-panel-title class="center">
                 Add your ingredient's names here!
               </mat-panel-title>
-              <hr>
-              <div class="center" style="align-items: flex-start;">
-                <mat-form-field>
+              <br />
+              <div class="center ingField" style="align-items: flex-start">
+                <mat-form-field appearance="fill">
                   <input
-                    #ing
                     type="text"
                     matInput
                     ngModel
                     name="ingredientNames"
+                    placeholder="Name"
                   />
                 </mat-form-field>
-                <button mat-stroked-button type="button" style="background-color: white;" (click)="onSave(ing)">
+
+                <!-- ingredient amount here -->
+                <div class="ingredientAmt">
+                  <div class="amount">
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        ngModel
+                        name="ingredientAmt"
+                        placeholder="Amount"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="measurement">
+                    <mat-form-field>
+                      <mat-select
+                        placeholder="Measurement"
+                        ngModel
+                        name="measurement"
+                      >
+                        <mat-option value="teaspoon(s)">teaspoon(s)</mat-option>
+                        <mat-option value="two">tablespoon(s)</mat-option>
+                        <mat-option value="three">ounce(s)</mat-option>
+                        <mat-option value="four">pound(s)</mat-option>
+                        <mat-option value="five">gram(s)</mat-option>
+                        <mat-option value="six">cup(s)</mat-option>
+                        <mat-option value="seven">quart(s)</mat-option>
+                        <mat-option value="eight">liter(s)</mat-option>
+                        <mat-option value="nine"> </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <button
+                  mat-stroked-button
+                  type="button"
+                  style="background-color: white"
+                  (click)="onSave(f)"
+                >
                   Save
                 </button>
               </div>
             </div>
-            <div *ngFor="let ingredient of ingredients; let i in index">
+            <div *ngFor="let ingredient of ingredients; let i; in: index">
               <mat-card class="ingCard"
                 >{{ ingredient }}
-                <mat-icon style="cursor: pointer;" (click)="removeIngredient(i)">delete</mat-icon>
+                <mat-icon style="cursor: pointer" (click)="removeIngredient(i)"
+                  >delete</mat-icon
+                >
               </mat-card>
             </div>
           </mat-expansion-panel>

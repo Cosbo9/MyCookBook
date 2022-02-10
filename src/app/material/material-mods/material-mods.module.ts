@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card'
 import { MatInputModule } from '@angular/material/input'
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
 
 
 const MaterialComponents = [
@@ -30,6 +31,7 @@ const MaterialComponents = [
   MatInputModule,
   MatExpansionModule,
   MatTooltipModule,
+  MatSelectModule,
 ]
 
 

@@ -1,12 +1,16 @@
 <form #f="ngForm">
   <mat-card class="cardBackground">
-    <mat-card-title class="title">Your Saved Recipes</mat-card-title>
-    <div class="refreshBtn">
-      <button mat-raised-button (click)="getRecipes(f)">Refresh recipe list</button>
+    <div class="cardTitle">
+      <mat-card-title class="title">Your Saved Recipes</mat-card-title>
     </div>
-    <br>
+    <div class="refreshBtn">
+      <button mat-raised-button (click)="getRecipes(f)">
+        Refresh recipe list
+      </button>
+    </div>
+    <br />
     <mat-divider></mat-divider>
-    <br>
+    <br />
     <mat-accordion *ngFor="let recipe of recipeList" class="center">
       <mat-expansion-panel hideToggle class="expansionCard">
         <mat-expansion-panel-header>
@@ -15,38 +19,48 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-divider></mat-divider>
-        <br>
+        <br />
         <div class="imageContainer">
           <mat-card ngModel name="recipeImg">
-            <img class="recipeImg" src="{{ recipe.imagePath }}" alt="recipe image">
+            <img
+              class="recipeImg"
+              src="{{ recipe.imagePath }}"
+              alt="recipe image"
+            />
           </mat-card>
         </div>
         <div class="ingredientOption">
-          <div class="ingredients" *ngFor="let ingredient of recipe.ingredientNames; let i in index">
-            <!-- <mat-card ngModel name="ingredients"> -->
-            <ul>
-              <li>
-                <div class="ingredientField">
-                  <p>{{ ingredient }}</p>
-                </div>
-              </li>
-            </ul>
-            <!-- </mat-card> -->
-          </div>
+          <mat-list role="list">
+            <div
+              class="ingredients"
+              *ngFor="
+                let ingredient of recipe.ingredientNames;
+                let i;
+                in: index
+              "
+            >
+              <mat-list-item>
+                {{ ingredient }}
+                <mat-divider></mat-divider>
+              </mat-list-item>
+            </div>
+          </mat-list>
         </div>
         <div class="recipeDesc">
-          <p>recipe description</p>
           <mat-card>
+            <mat-card-title>Recipe description</mat-card-title>
             <p>
               {{ recipe.description }}
             </p>
           </mat-card>
         </div>
-        <br>
+        <br />
         <mat-divider></mat-divider>
-        <br>
+        <br />
         <div class="editIcon">
-          <mat-icon matTooltip="Edit this recipe" (click)="onEdit()">edit</mat-icon>
+          <mat-icon matTooltip="Edit this recipe" (click)="onEdit()"
+            >edit</mat-icon
+          >
         </div>
       </mat-expansion-panel>
     </mat-accordion>

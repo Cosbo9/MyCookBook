@@ -51,3 +51,23 @@
   margin-bottom: 15px;
   background-color: whitesmoke;
 }
+
+.ingField {
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredientAmt {
+  display: flex;
+  flex-direction: row;
+}
+
+.amount {
+}
+
+.measurement {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-left: 10px;
+  width: 90px;
+}
