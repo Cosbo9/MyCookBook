@@ -17,7 +17,7 @@ export class DatabaseService {
 
   saveRecipe(recipe: any) {
     this.http
-      .post(
+      .post<Recipe>(
         `https://mycookbook-efbac-default-rtdb.firebaseio.com/${this.user}/recipes.json`,
         recipe
       )
