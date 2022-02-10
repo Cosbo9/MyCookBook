@@ -11,15 +11,13 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class NewRecipeComponent implements OnInit {
   ingredients: any[] = [];
 
-  constructor(private db: DatabaseService) { }
+  constructor(private db: DatabaseService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onSave(data: any) {
-    console.log(data)
     if (data.value) {
       this.ingredients.push(data.value);
-      console.log(data.value)
       data.value = '';
     }
   }
@@ -27,14 +25,13 @@ export class NewRecipeComponent implements OnInit {
   onSubmit(data: NgForm) {
     if (data.valid) {
       data.form.value.ingredientNames = this.ingredients;
-      // this.db.saveRecipe(data.form.value)
-      console.log(data.form.value)
-      data.reset()
+      this.db.saveRecipe(data.form.value);
+      data.reset();
     }
   }
 
   onCancel(form: NgForm) {
-    form.reset()
+    form.reset();
   }
 
   addIngredient() {
