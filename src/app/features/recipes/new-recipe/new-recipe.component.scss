@@ -40,7 +40,7 @@
 
 .addIcon {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: 3%;
     cursor: pointer;
 }
@@ -63,11 +63,13 @@
 }
 
 .amount {
+  width: 75px;
 }
 
 .measurement {
   display: flex;
   flex-direction: column-reverse;
   margin-left: 10px;
+  margin-bottom: 2px;
   width: 90px;
 }

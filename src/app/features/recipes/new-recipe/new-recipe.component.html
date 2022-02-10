@@ -57,13 +57,14 @@
                 <!-- ingredient amount here -->
                 <div class="ingredientAmt">
                   <div class="amount">
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill" class="amount">
                       <input
                         type="text"
                         matInput
                         ngModel
                         name="ingredientAmt"
                         placeholder="Amount"
+                        #ingName
                       />
                     </mat-form-field>
                   </div>
@@ -74,15 +75,15 @@
                         ngModel
                         name="measurement"
                       >
-                        <mat-option value="teaspoon(s)">teaspoon(s)</mat-option>
-                        <mat-option value="tablespoon(s)">tablespoon(s)</mat-option>
-                        <mat-option value="ounce(s)">ounce(s)</mat-option>
-                        <mat-option value="pound(s)">pound(s)</mat-option>
-                        <mat-option value="gram(s)">gram(s)</mat-option>
+                        <mat-option value="tsp">teaspoon(s)</mat-option>
+                        <mat-option value="tbsp">tablespoon(s)</mat-option>
+                        <mat-option value="oz">ounce(s)</mat-option>
+                        <mat-option value="lbs">pound(s)</mat-option>
+                        <mat-option value="g(s)">gram(s)</mat-option>
                         <mat-option value="cup(s)">cup(s)</mat-option>
-                        <mat-option value="quart(s)">quart(s)</mat-option>
+                        <mat-option value="qt(s)">quart(s)</mat-option>
                         <mat-option value="liter(s)">liter(s)</mat-option>
-                        <mat-option value=" "> </mat-option>
+                        <mat-option value=" ">no unit</mat-option>
                       </mat-select>
                     </mat-form-field>
                   </div>
@@ -95,11 +96,15 @@
                 >
                   Save
                 </button>
+                <br />
               </div>
             </div>
             <div *ngFor="let ingredient of ingredients; let i; in: index">
               <mat-card class="ingCard"
-                >{{ ingredient.ingredientNames }} {{ ingredient.ingredientAmt + "" + ingredient.measurement}}
+                >{{ ingredient.name }}
+                <div class="measureAmt">
+                  {{ ingredient.amount + " " + ingredient.measurement }}
+                </div>
                 <mat-icon style="cursor: pointer" (click)="removeIngredient(i)"
                   >delete</mat-icon
                 >

@@ -15,10 +15,16 @@ export class NewRecipeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSave(data: any) {
-    if (data.value) {
-      this.ingredients.push(data.value);
-      data.value = '';
+  onSave(data: NgForm) {
+    if (data.value.ingredientNames) {
+      let ingredientInfo = {
+        name: data.value.ingredientNames,
+        amount: data.value.ingredientAmt,
+        measurement: data.value.measurement,
+      };
+      this.ingredients.push(ingredientInfo);
+    } else {
+      alert('Please enter an ingredient name!')
     }
   }
 
@@ -32,6 +38,7 @@ export class NewRecipeComponent implements OnInit {
 
   onCancel(form: NgForm) {
     form.reset();
+    this.ingredients = [];
   }
 
   addIngredient() {
