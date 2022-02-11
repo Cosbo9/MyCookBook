@@ -29,11 +29,12 @@ export class NewRecipeComponent implements OnInit {
     }
   }
 
-  onSubmit(data: NgForm) {
+  onSubmit(data: NgForm, ingData: NgForm) {
     if (data.valid) {
       data.form.value.ingredientNames = this.ingredients;
       this.db.saveRecipe(data.form.value);
       data.reset();
+      ingData.reset()
     }
   }
 

@@ -1,10 +1,10 @@
 import { Ingredient } from './ingredient.model';
 
 export class Recipe {
-    public name: string;
+    public recipeName: string;
     public description: string;
     public imagePath: string;
-    public ingredients: any;
+    public ingredientNames: any;
     public ingredientAmt: string;
 
     constructor(
@@ -14,10 +14,10 @@ export class Recipe {
         ingredients: string,
         ingredientAmt: string
     ) {
-        this.name = name;
+        this.recipeName = name;
         this.description = desc;
         this.imagePath = imagePath;
-        this.ingredients = ingredients;
+        this.ingredientNames = ingredients;
         this.ingredientAmt = ingredientAmt
     }
 }

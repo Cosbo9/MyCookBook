@@ -15,28 +15,28 @@
       <mat-expansion-panel hideToggle class="expansionCard">
         <mat-expansion-panel-header>
           <mat-panel-title ngModel class="recipeName" name="recipeName">
-            <p>{{ recipe.name }}</p>
+            <strong>{{ recipe.recipeName }}</strong>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-divider></mat-divider>
         <br />
         <div class="imageContainer">
           <mat-card ngModel name="recipeImg">
-            <img
-              class="recipeImg"
-              src="{{ recipe.imagePath }}"
-              alt="recipe image"
-            />
+            <img class="recipeImg" src="{{ recipe.imagePath }}" alt="recipe image" />
           </mat-card>
         </div>
         <div class="ingredientOption">
           <mat-list role="list">
-            <div
-              class="ingredients"
-              *ngFor="let ingredient of recipe.ingredients; let i; in: index"
-            >
+            <div class="ingredients" *ngFor="let ingredient of recipe.ingredientNames; let i = index">
               <mat-list-item>
-                {{ ingredient }}
+                <div class="ingGroup">
+                  <div class="ingName">
+                    {{ ingredient.name }}
+                  </div>
+                  <div class="ingAmt">
+                    {{ ingredient.amount + ingredient.measurement}}
+                  </div>
+                </div>
                 <mat-divider></mat-divider>
               </mat-list-item>
             </div>
@@ -54,9 +54,7 @@
         <mat-divider></mat-divider>
         <br />
         <div class="editIcon">
-          <mat-icon matTooltip="Edit this recipe" (click)="onEdit()"
-            >edit</mat-icon
-          >
+          <mat-icon matTooltip="Edit this recipe" (click)="onEdit()">edit</mat-icon>
         </div>
       </mat-expansion-panel>
     </mat-accordion>

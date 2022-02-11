@@ -21,10 +21,12 @@ export class SavedRecipesComponent implements OnInit {
   }
 
   getRecipes(form: NgForm) {
-    form.reset();
     this.db.getRecipeList().subscribe((data: any) => {
+      console.log(data)
       Object.values(data).map((returnData: any) => {
+        console.log('mapping over object ' + returnData.value)
         this.recipeList.push(returnData);
+        console.log(this.recipeList)
       });
     });
   }

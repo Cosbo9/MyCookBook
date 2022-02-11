@@ -23,7 +23,7 @@
 }
 
 .cardBackground {
-  height: 525px;
+  height: 840px;
   overflow: auto;
   background-color: rgba($color: #eeeeee, $alpha: 1);
 }
@@ -58,4 +58,14 @@
 
 .recipeList {
   overflow: auto;
+}
+
+.ingGroup {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ingName {
+  text-transform: capitalize;
 }
