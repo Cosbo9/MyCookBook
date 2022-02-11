@@ -1,9 +1,5 @@
 <!-- New recipe card start -->
-<form
-  #f="ngForm"
-  (ngSubmit)="onSubmit(f)"
-  style="display: flex; justify-content: center"
->
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" style="display: flex; justify-content: center">
   <mat-card class="cardStyle">
     <!-- card title start -->
     <div>
@@ -18,96 +14,69 @@
       <div class="recipeName center">
         <mat-form-field appearance="outline" style="width: 60vw">
           <mat-label>Recipe Name</mat-label>
-          <input
-            matInput
-            placeholder="Recipe Name"
-            ngModel
-            #recipeName
-            ngModel
-            name="recipeName"
-          />
+          <input matInput placeholder="Recipe Name" ngModel #recipeName ngModel name="recipeName" />
         </mat-form-field>
       </div>
       <!-- card ingredient field start -->
 
       <div class="center">
         <mat-accordion class="ingredientList">
-          <mat-expansion-panel>
+          <mat-expansion-panel #panel>
             <mat-expansion-panel-header style="background-color: white">
               <mat-panel-title class="center"> Ingredients </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-divider></mat-divider>
             <div>
-              <br />
-              <mat-panel-title class="center">
-                Add your ingredient's names here!
-              </mat-panel-title>
-              <br />
-              <div class="center ingField" style="align-items: flex-start">
-                <mat-form-field appearance="fill">
-                  <input
-                    type="text"
-                    matInput
-                    ngModel
-                    name="ingredientNames"
-                    placeholder="Name"
-                  />
-                </mat-form-field>
-
-                <!-- ingredient amount here -->
-                <div class="ingredientAmt">
-                  <div class="amount">
-                    <mat-form-field appearance="fill" class="amount">
-                      <input
-                        type="text"
-                        matInput
-                        ngModel
-                        name="ingredientAmt"
-                        placeholder="Amount"
-                        #ingName
-                      />
-                    </mat-form-field>
-                  </div>
-                  <div class="measurement">
-                    <mat-form-field>
-                      <mat-select
-                        placeholder="Measurement"
-                        ngModel
-                        name="measurement"
-                      >
-                        <mat-option value="tsp">teaspoon(s)</mat-option>
-                        <mat-option value="tbsp">tablespoon(s)</mat-option>
-                        <mat-option value="oz">ounce(s)</mat-option>
-                        <mat-option value="lbs">pound(s)</mat-option>
-                        <mat-option value="g(s)">gram(s)</mat-option>
-                        <mat-option value="cup(s)">cup(s)</mat-option>
-                        <mat-option value="qt(s)">quart(s)</mat-option>
-                        <mat-option value="liter(s)">liter(s)</mat-option>
-                        <mat-option value=" ">no unit</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                </div>
-                <button
-                  mat-stroked-button
-                  type="button"
-                  style="background-color: white"
-                  (click)="onSave(f)"
-                >
-                  Save
-                </button>
+              <form #ingForm="ngForm">
                 <br />
-              </div>
-            </div>
-            <div *ngFor="let ingredient of ingredients; let i; in: index">
-              <mat-card class="ingCard"
-                >{{ ingredient.name }}
-                <div class="measureAmt">
-                  {{ ingredient.amount + " " + ingredient.measurement }}
+                <mat-panel-title class="center">
+                  Add your ingredient's names here!
+                </mat-panel-title>
+                <br />
+                <div class="center ingField" style="align-items: flex-start">
+                  <mat-form-field appearance="fill">
+                    <input type="text" matInput ngModel name="ingredientNames" placeholder="Name" />
+                  </mat-form-field>
+
+                  <!-- ingredient amount here -->
+                  <div class="ingredientAmt">
+                    <div class="amount">
+                      <mat-form-field appearance="fill" class="amount">
+                        <input type="text" matInput ngModel name="ingredientAmt" placeholder="Amount" #ingName />
+                      </mat-form-field>
+                    </div>
+                    <div class="measurement">
+                      <mat-form-field>
+                        <mat-select placeholder="Measurement" ngModel name="measurement">
+                          <mat-option value="tsp">teaspoon(s)</mat-option>
+                          <mat-option value="tbsp">tablespoon(s)</mat-option>
+                          <mat-option value="oz">ounce(s)</mat-option>
+                          <mat-option value="lbs">pound(s)</mat-option>
+                          <mat-option value="g(s)">gram(s)</mat-option>
+                          <mat-option value="cup(s)">cup(s)</mat-option>
+                          <mat-option value="qt(s)">quart(s)</mat-option>
+                          <mat-option value="liter(s)">liter(s)</mat-option>
+                          <mat-option value=" ">no unit</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <button mat-stroked-button type="button" style="background-color: white" (click)="onSave(ingForm)">
+                    Save
+                  </button>
+                  <br />
                 </div>
-                <mat-icon style="cursor: pointer" (click)="removeIngredient(i)"
-                  >delete</mat-icon
-                >
+              </form>
+            </div>-
+            <div *ngFor="let ingredient of ingredients; let i = index">
+              <mat-card class="ingCard">{{ ingredient.name }}
+                <div *ngIf="ingredient.amount" class="measureAmt">
+                  {{ ingredient.amount}}
+                  <div>
+                    {{ ingredient.measurement }}
+                  </div>
+                </div>
+                <mat-icon style="cursor: pointer" (click)="removeIngredient(i)">delete</mat-icon>
               </mat-card>
             </div>
           </mat-expansion-panel>
@@ -119,19 +88,9 @@
       <div class="imageURL center">
         <mat-form-field appearance="outline" style="width: 60vw">
           <mat-label>Image URL</mat-label>
-          <input
-            matInput
-            placeholder="Image URL"
-            ngModel
-            name="imagePath"
-            #imagePath
-          />
+          <input matInput placeholder="Image URL" ngModel name="imagePath" #imagePath />
           <div *ngIf="imagePath.value">
-            <img
-              [src]="imagePath.value"
-              alt="recipe image"
-              style="max-height: 60%; max-width: 60%"
-            />
+            <img [src]="imagePath.value" alt="recipe image" style="max-height: 60%; max-width: 60%" />
           </div>
         </mat-form-field>
       </div>
@@ -141,13 +100,7 @@
       <div class="recipeDesc center">
         <mat-form-field appearance="outline" style="width: 60vw">
           <mat-label>Recipe description</mat-label>
-          <textarea
-            matInput
-            placeholder="Description"
-            ngModel
-            name="description"
-            #recpieDesc
-          ></textarea>
+          <textarea matInput placeholder="Description" ngModel name="description" #recpieDesc></textarea>
         </mat-form-field>
       </div>
       <!-- card recipe description end -->
@@ -155,20 +108,10 @@
     <!-- card content end -->
     <div class="buttons">
       <mat-divider></mat-divider>
-      <button
-        mat-raised-button
-        color="primary"
-        style="width: 20vw; margin-top: 2%"
-      >
+      <button mat-raised-button color="primary" style="width: 20vw; margin-top: 2%">
         Submit
       </button>
-      <button
-        type="button"
-        mat-raised-button
-        color="warn"
-        style="width: 20vw; margin-top: 2%"
-        (click)="onCancel(f)"
-      >
+      <button type="button" mat-raised-button color="warn" style="width: 20vw; margin-top: 2%" (click)="onCancel(f); panel.close()">
         Cancel
       </button>
     </div>

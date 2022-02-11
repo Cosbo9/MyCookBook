@@ -11,9 +11,9 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class NewRecipeComponent implements OnInit {
   ingredients: any[] = [];
 
-  constructor(private db: DatabaseService) {}
+  constructor(private db: DatabaseService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSave(data: NgForm) {
     if (data.value.ingredientNames) {
@@ -23,6 +23,7 @@ export class NewRecipeComponent implements OnInit {
         measurement: data.value.measurement,
       };
       this.ingredients.push(ingredientInfo);
+      data.reset()
     } else {
       alert('Please enter an ingredient name!')
     }
@@ -45,7 +46,7 @@ export class NewRecipeComponent implements OnInit {
     this.ingredients.push('');
   }
 
-  removeIngredient(index: any) {
+  removeIngredient(index: number) {
     this.ingredients.splice(index, 1);
   }
 }
